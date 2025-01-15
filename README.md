@@ -21,10 +21,10 @@
 
 ```bash
 # Clone o repositório
-git clone https://github.com/guilhermeapolinario/noripurum.git
+git clone https://github.com/guilhermeapolinario/noripurum-ubs.git
 
 # Entre no diretório
-cd noripurum
+cd noripurum-ubs
 
 # Instale as dependências
 npm install
@@ -36,31 +36,40 @@ npm run dev
 ## 🏗️ Estrutura do Projeto
 
 ```
-projeto/
+noripurum-ubs
+├── LICENSE
+├── README.md
+├── eslint.config.js
 ├── index.html
-├── src/
-│   ├── style.css
-│   ├── main.js
-│   ├── components/
-│   │   ├── Sidebar.js
-│   │   ├── Content.js
-│   │   ├── Calculator.js
-│   │   └── Checklist.js
-│   └── data/
-│       └── notatecnica.js
-├── public/
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   └── checklist-seguranca.pdf
+│   ├── components
+│   │   ├── Footer.jsx
+│   │   ├── Navbar.jsx
+│   │   └── aplications
+│   │       ├── CalculadoraNoripurum.jsx
+│   │       └── PdfViewer.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   ├── pages
+│   │   ├── PageCinco.jsx
+│   │   ├── PageDois.jsx
+│   │   ├── PageQuatro.jsx
+│   │   ├── PageTres.jsx
+│   │   ├── PageUm.jsx
+│   │   └── PrescriptionForm.css
+│   └── vite-env.d.ts
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
 └── vite.config.js
 ```
-
-## 📦 Build
-
-Para gerar a versão de produção:
-
-```bash
-npm run build
-```
-
-Os arquivos serão gerados no diretório `dist/`.
 
 ## 🌍 Deploy
 
@@ -74,68 +83,6 @@ npm run deploy
 npm run preview
 ```
 
-## 🧪 Referências Técnicas
-
-- Fórmula de Ganzoni para cálculo do déficit de ferro
-- Protocolos de diluição e administração baseados em evidências
-- Diretrizes de segurança para administração de ferro endovenoso
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## ✨ Contribuição
-
-1. Faça o fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## 👥 Autores
-
-* **Seu Nome** - *Trabalho inicial* - [SeuUsuario](https://github.com/SeuUsuario)
-
-## 📝 Notas
-
-- Este é um projeto em desenvolvimento ativo
-- Sugestões e contribuições são bem-vindas
-- Para questões e suporte, abra uma issue no GitHub
-
-## 🙏 Agradecimentos
-
-- Equipes de saúde que contribuíram com feedback
-- Comunidade de desenvolvedores
-- Referências e protocolos **utilizados**
-
-
-
-
-
-## Instalação
-
-#### Clonar o repositório
-
-```bash
-git clone https://github.com/guilhermeapolinario/noripurum.git
-```
-
-#### Instalar as dependências
-
-```bash
-npm install
-ou
-yarn install
-```
-
-#### Executar o projeto
-
-```bash
-npm run dev
-ou
-yarn dev
-```
-
 ## Como usar:
 - Transcorrer das páginas
 - Clicar nas setas direita ou esquerda para avançar ou voltar para a próxima página
@@ -147,39 +94,35 @@ yarn dev
 
 ---
 
-- *Nota: A dose de ferro é calculada com base nos dados fornecidos e o resultado é exibido na página. Calculadora para uso em adultos.*
 
+
+## 🧪 Referências Técnicas
+
+- Fórmula de Ganzoni para cálculo do déficit de ferro
+- Protocolos de diluição e administração baseados em evidências
+- Diretrizes de segurança para administração de ferro endovenoso
+
+## ✨ Contribuição
+
+1. Faça o fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## 👥 Autores
+
+* **Guilherme Apolinário** - [gtellapolinario](https://github.com/gtellapolinario)
+
+---
+- *Nota: A dose de ferro é calculada com base nos dados fornecidos e o resultado é exibido na página. Calculadora para uso em adultos.*
 - *Atenção aos arredondamentos e aos valores mínimos e máximos de dose de ferro. Uso exclusivo para profissionais de saúde.*
 
-- *Uso responsável e consciente.*
+- *O software é de uso responsável e consciente por profissionais de saúde.* 
+- *Não substitui a consulta com um médico.*
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Licença
+## 📄 Licença
 
 Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
 

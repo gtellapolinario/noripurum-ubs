@@ -1,182 +1,86 @@
-import React from 'react';
-import { FaNotesMedical, FaFlask, FaExclamationTriangle, FaClinicMedical, FaHospitalAlt } from 'react-icons/fa';
-import './PrescriptionForm.css';
+// src/pages/PageTres.jsx
+import React from 'react'
+import { FaHeartbeat, FaExclamationTriangle, FaClipboardList } from 'react-icons/fa'
 
-function PageTres() {
+export function PageTres() {
   return (
-    <div className="container">
-      <div className="page">
-        {/* Título principal com ícone */}
-        <h2 className="flex items-center gap-2">
-          <FaNotesMedical className="text-blue-600" size={24} />
-          4. CRITÉRIOS DE ELEGIBILIDADE
+    <div className="space-y-6 p-6">
+      <header className="flex items-center gap-3">
+        <FaHeartbeat className="text-rose-600" size={22} />
+        <h2 className="text-lg text-shadow-sm font-semibold text-gray-900">
+          Reações, anafilaxia e monitorização
         </h2>
+      </header>
 
-        <div className="section">
-          <div className="highlight-box">
-            <h3 className="flex items-center gap-2">
-              <FaFlask className="text-green-600" size={20} />
-              4.1 Aspectos Farmacológicos
-            </h3>
-            <table>
-              <tbody>
-                <tr>
-                  <td><strong>Apresentação</strong></td>
-                  <td>Sacarato de Hidróxido Férrico 100mg/5ml</td>
-                </tr>
-                <tr>
-                  <td><strong>Nome Comercial</strong></td>
-                  <td>Noripurum®</td>
-                </tr>
-                <tr>
-                  <td><strong>Via de Administração</strong></td>
-                  <td>Exclusivamente endovenosa</td>
-                </tr>
-                <tr>
-                  <td><strong>Armazenamento</strong></td>
-                  <td>Temperatura ambiente (15-30°C)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="protocol-box">
-            <h3 className="flex items-center gap-2">
-              <FaClinicMedical className="text-yellow-600" size={20} />
-              4.2 Situações com Indicação Específica
-            </h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Condição</th>
-                  <th>Considerações</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Gestação</strong></td>
-                  <td>2º e 3º trimestres apenas</td>
-                </tr>
-                <tr>
-                  <td><strong>Doença Renal Crônica</strong></td>
-                  <td>Especialmente em pacientes dialíticos</td>
-                </tr>
-                <tr>
-                  <td><strong>Pós-operatório</strong></td>
-                  <td>Cirurgias com perdas significativas</td>
-                </tr>
-                <tr>
-                  <td><strong>Doenças Inflamatórias</strong></td>
-                  <td>IBD, artrite reumatoide</td>
-                </tr>
-                <tr>
-                  <td><strong>Pós-bariátrica</strong></td>
-                  <td>Síndromes malabsortivas</td>
-                </tr>
-                <tr>
-                  <td><strong>Intolerância ao ferro oral</strong></td>
-                  <td>Documentada e refratária a ajustes</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="important">
-            <h3 className="flex items-center gap-2">
-              <FaExclamationTriangle className="text-red-600" size={20} />
-              4.3 Contraindicações
-            </h3>
-            <div className="protocol-box">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Absolutas</th>
-                    <th>Relativas</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <ul>
-                        <li>Primeiro trimestre de gestação</li>
-                        <li>História de reação alérgica ao ferro</li>
-                        <li>Infecções agudas/bacteremia</li>
-                        <li>Hemocromatose/hemosiderose</li>
-                        <li>Anemias não-ferropênicas</li>
-                        <li>Hepatopatia grave</li>
-                      </ul>
-                    </td>
-                    <td>
-                      <ul>
-                        <li>Asma</li>
-                        <li>Dermatite atópica</li>
-                        <li>DPOC</li>
-                        <li>Cardiopatias graves</li>
-                        <li>Doenças autoimunes em atividade</li>
-                      </ul>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+      {/* 7. Reações adversas */}
+      <section className="rounded-lg border border-stone-200 bg-rose-50 shadow-lg p-4">
+        <div className="mb-2 flex items-center gap-2">
+          <FaHeartbeat className="text-rose-600" />
+          <h3 className="text-base text-shadow-sm font-semibold">
+            7. Reações adversas — reconhecimento rápido
+          </h3>
         </div>
-
-        <div className="section">
-          <h2 className="flex items-center gap-2">
-            <FaHospitalAlt className="text-blue-600" size={24} />
-            5. NÍVEIS DE ATENDIMENTO
-          </h2>
-
-          <div className="highlight-box">
-            <h3 className="flex items-center gap-2">
-              <FaClinicMedical className="text-green-600" size={20} />
-              5.1 Atenção Primária à Saúde (APS)
-            </h3>
-            <div className="protocol-box">
-              <p><strong>Critérios para atendimento:</strong></p>
-              <ul>
-                <li>Anemia ferropriva sem complicações</li>
-                <li>Ausência de comorbidades graves</li>
-                <li>Acesso venoso adequado</li>
-                <li>Disponibilidade de supervisão médica</li>
-              </ul>
-
-              <div className="alert" style={{ marginTop: '15px' }}>
-                <p><strong>Requisitos estruturais:</strong></p>
-                <ul>
-                  <li>Presença de médico durante todo o procedimento</li>
-                  <li>Material de emergência disponível</li>
-                  <li>Equipe treinada para manejo de reações</li>
-                  <li>Capacidade de monitorização adequada</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="important">
-            <h3 className="flex items-center gap-2">
-              <FaHospitalAlt className="text-yellow-600" size={20} />
-              5.2 Unidades de Pronto Atendimento (UPA)
-            </h3>
-            <p><strong>Indicações para encaminhamento:</strong></p>
-            <ul>
-              <li>Pacientes com comorbidades graves</li>
-              <li>Alto risco de reações adversas</li>
-              <li>Necessidade de monitoramento intensivo</li>
-              <li>Histórico de reações prévias</li>
-              <li>Dificuldade de acesso venoso</li>
-              <li>Necessidade de administração em caráter de urgência</li>
-            </ul>
-          </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm text-gray-700">
+            <thead>
+              <tr className="text-left text-gray-500">
+                <th className="py-1">Gravidade</th>
+                <th className="py-1">Exemplos</th>
+                <th className="py-1">Conduta</th>
+              </tr>
+            </thead>
+            <tbody className="[&>tr:nth-child(even)]:bg-white/50">
+              <tr>
+                <td className="py-1"><strong>Leve</strong></td>
+                <td>Rubor, prurido, náusea leve</td>
+                <td>Reduzir velocidade; observar SV</td>
+              </tr>
+              <tr>
+                <td className="py-1"><strong>Moderada</strong></td>
+                <td>Urticária, dor torácica/dispneia leve, hipotensão leve</td>
+                <td>Interromper; anti-histamínico; considerar corticoide</td>
+              </tr>
+              <tr>
+                <td className="py-1"><strong>Grave</strong></td>
+                <td>Hipotensão grave, broncoespasmo, edema de glote, síncope</td>
+                <td>Interromper; suporte avançado; adrenalina imediata</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </section>
 
-        <div className="page-footer">
-          Referencial Técnico: Administração de Ferro Endovenoso - Página 3
+      {/* 8. Anafilaxia */}
+      <section className="rounded-lg border border-stone-200 bg-red-50 shadow-lg p-4">
+        <div className="mb-2 flex items-center gap-2">
+          <FaExclamationTriangle className="text-red-600" />
+          <h3 className="text-base text-shadow-sm font-semibold">
+            8. Anafilaxia — prioridade absoluta
+          </h3>
         </div>
-      </div>
+        <ul className="ml-5 list-disc space-y-1 text-sm text-gray-700">
+          <li><strong>Adrenalina IM 1:1000</strong> 0,3–0,5 mg (deltoide); repetir a cada 5–15 min se necessário.</li>
+          <li>Oxigênio; expansão com SF 0,9%; broncodilatador se broncoespasmo.</li>
+          <li>Anti-histamínico e corticoide <em>após</em> adrenalina; acionar suporte avançado.</li>
+        </ul>
+      </section>
+
+      {/* 9. Monitorização & documentação */}
+      <section className="rounded-lg border border-stone-200 bg-sky-50 shadow-lg p-4">
+        <div className="mb-2 flex items-center gap-2">
+          <FaClipboardList className="text-blue-600" />
+          <h3 className="text-base text-shadow-sm font-semibold">
+            9. Monitorização & documentação
+          </h3>
+        </div>
+        <ul className="ml-5 list-disc space-y-1 text-sm text-gray-700">
+          <li><strong>Sinais vitais:</strong> basal → a cada 15 min durante → 30 min após.</li>
+          <li><strong>Registrar:</strong> dose, diluição, tempo, reações e condutas; assinaturas.</li>
+          <li><strong>Follow-up:</strong> hemograma e ferritina em 2–4 semanas; ajustar plano.</li>
+        </ul>
+      </section>
     </div>
-  );
+  )
 }
 
-export default PageTres;
+export default PageTres

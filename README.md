@@ -21,7 +21,7 @@
 
 ```bash
 # Clone o repositório
-git clone https://github.com/guilhermeapolinario/noripurum-ubs.git
+git clone https://github.com/gtellapolinario/noripurum-ubs.git
 
 # Entre no diretório
 cd noripurum-ubs
@@ -39,35 +39,25 @@ npm run dev
 noripurum-ubs
 ├── LICENSE
 ├── README.md
-├── eslint.config.js
 ├── index.html
 ├── package-lock.json
 ├── package.json
-├── postcss.config.js
 ├── src
 │   ├── App.jsx
-│   ├── assets
-│   │   └── checklist-seguranca.pdf
 │   ├── components
 │   │   ├── Footer.jsx
 │   │   ├── Navbar.jsx
 │   │   └── aplications
-│   │       ├── CalculadoraNoripurum.jsx
-│   │       └── PdfViewer.jsx
+│   │       └── CalculadoraNoripurum.jsx
 │   ├── index.css
 │   ├── main.jsx
 │   ├── pages
-│   │   ├── PageCinco.jsx
 │   │   ├── PageDois.jsx
-│   │   ├── PageQuatro.jsx
 │   │   ├── PageTres.jsx
 │   │   ├── PageUm.jsx
 │   │   └── PrescriptionForm.css
 │   └── vite-env.d.ts
-├── tailwind.config.js
-├── tsconfig.app.json
-├── tsconfig.json
-├── tsconfig.node.json
+├── jsconfig.json
 └── vite.config.js
 ```
 

@@ -1,46 +1,49 @@
-import { FaGithub, FaExternalLinkAlt, FaInfoCircle, FaMapMarkerAlt } from 'react-icons/fa';
+// src/components/Footer.jsx
+import { FaGithub, FaInfoCircle, FaStethoscope } from 'react-icons/fa';
 
 function Footer() {
   return (
-    <footer className="bg-gray-200 py-6 shadow-inner">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        {/* Texto */}
-        <div className="text-center md:text-left mb-4 md:mb-0">
-          <p className="text-gray-800 text-lg font-semibold">
-            Referencial Técnico: Administração de Ferro Endovenoso
-          </p>
-          <p className="text-gray-800 text-base">
-            Oferecimento:{' '}
+    <footer className="h-28 bg-gradient-to-r  from-sky-200 via-blue-200 to-indigo-100 border-indigo-100 shadow-t-2xl">
+      {/* Linha de acento médico */}
+      <div className="h-1 bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600" />
+ 
+      <div className="w-full">
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex items-center justify-center gap-2 text-center px-6 pt-6">
+            <FaStethoscope className="text-blue-700" size={22} />
+            <span className="text-sm font-medium text-gray-800 text-shadow-sm px-6 ">
+              Referencial Técnico de Administração de Ferro Endovenoso
+            </span>
+            <span className="text-gray-400">-</span>
+            <span className="text-xs text-stone-600 text-shadow-sm">
+              © {new Date().getFullYear()} GT-Medic - Todos os direitos reservados
+            </span>
+          </div>
+
+          {/* Links de navegação abaixo */}
+          <div className="flex items-center justify-center gap-4">
             <a
-              href="https://huggingface.co/spaces/drguilhermeapolinario/Flamengo"
+              href="https://github.com/gtellapolinario"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline flex items-center gap-2 justify-center md:justify-start"
+              className="inline-flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
             >
-              <FaMapMarkerAlt className="text-red-600" size={18} />
-              UBS Flamengo <FaExternalLinkAlt size={16} />
+              <FaGithub size={20} />
+              <span>GitHub</span>
             </a>
-          </p>
-        </div>
-
-        {/* Links sociais */}
-        <div className="flex gap-4">
-          <a
-            href="https://github.com/drguilhermeapolinario"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-700 hover:text-blue-600"
-          >
-            <FaGithub size={28} />
-          </a>
-          <a
-            href="https://huggingface.co"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-700 hover:text-green-600"
-          >
-            <FaInfoCircle size={28} />
-          </a>
+            
+            <span className="text-gray-300">•</span>
+            
+            <a
+              href="https://huggingface.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              <FaInfoCircle size={20} />
+              <span>Informações</span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>

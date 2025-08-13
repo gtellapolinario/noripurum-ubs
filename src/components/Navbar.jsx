@@ -1,119 +1,136 @@
-import React, { useState } from 'react';
-import { Layout, Typography, Button, Space, Tooltip } from 'antd';
-import { Beaker, Home, ChevronLeft, ChevronRight, FileText } from 'lucide-react';
-import PageUm from '@p/PageUm';
-import PageDois from '@p/PageDois';
-import PageTres from '@p/PageTres';
-import PageQuatro from '@p/PageQuatro';
-import PageCinco from '@p/PageCinco';
-import Footer from '@c/Footer';
-import CalculadoraNoripurum from '@c/aplications/CalculadoraNoripurum';  // Importante manter este import
-import checklistPDF from '@a/checklist-seguranca.pdf';
+// src/components/Navbar.jsx
+import React, { useState, useCallback, useEffect, useMemo } from "react";
+import {
+  Beaker,
+  Home,
+  ChevronLeft,
+  ChevronRight,
+  FileText,
+} from "lucide-react";
 
-const { Header, Content } = Layout;
-const { Title } = Typography;
+import { GiLoveInjection } from "react-icons/gi";
+
+import PageUm from "@p/PageUm";
+import PageDois from "@p/PageDois";
+import PageTres from "@p/PageTres";
+
+import Footer from "@c/Footer";
+import CalculadoraNoripurum from "@c/aplications/CalculadoraNoripurum";
 
 function Navbar() {
+  const pages = useMemo(
+    () => [
+      <PageUm key="1" />,
+      <PageDois key="2" />,
+      <PageTres key="3" />,
+    ],
+    []
+  );
   const [currentPage, setCurrentPage] = useState(0);
-  const pages = [<PageUm />, <PageDois />, <PageTres />, <PageQuatro />, <PageCinco />];
+  const total = pages.length;
 
-  const handleNext = () => {
-    if (currentPage < pages.length - 1) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+  const handleNext = useCallback(() => {
+    setCurrentPage((i) => Math.min(i + 1, total - 1));
+  }, [total]);
 
-  const handlePrevious = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
+  const handlePrevious = useCallback(() => {
+    setCurrentPage((i) => Math.max(i - 1, 0));
+  }, []);
 
-  const home = () => {
-    setCurrentPage(0);
-  };
+  const goHome = useCallback(() => setCurrentPage(0), []);
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "ArrowLeft") handlePrevious();
+      if (e.key.toLowerCase() === "h" || e.key === "Home") goHome();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [handleNext, handlePrevious, goHome]);
+
+  const navBtnCls = (disabled) =>
+    [
+      "inline-flex items-center justify-center h-9 w-9 rounded-md transition-colors",
+      disabled
+        ? "opacity-50 pointer-events-none"
+        : "hover:bg-gray-100 active:bg-gray-200",
+    ].join(" ");
 
   return (
-    <Layout className="flex flex-col min-h-screen bg-gray-50">
-      <Header className="bg-white border-b border-gray-200 fixed w-full z-10 px-4 h-16">
-        <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
-          {/* Left side - Brand */}
-          <div className="flex items-center space-x-3">
-            <Beaker className="text-blue-600" size={28} />
-            <Title level={4} className="!m-0 !text-gray-800 hidden md:block">
-              Noripurum: Administração de Ferro Endovenoso
-            </Title>
-            <Title level={4} className="!m-0 !text-gray-800 md:hidden">
-              Noripurum
-            </Title>
+    <div className="flex min-h-screen flex-col bg-gradient-to-b from-red-100 via-sky-100 to-orange-100">
+      {/* Header */}
+      <header className="fixed inset-x-0 top-0 z-10 h-16 bg-white px-4 shadow-xl border-b border-gray-200">
+        <div className="mx-auto flex h-full w-full items-center justify-center gap-6">
+          {/* Branding */}
+          <div className=" flex items-center justify-around gap-3">
+            <GiLoveInjection className="text-blue-600" size={32} aria-hidden="true" />
+            <h1 className="hidden md:block m-0 text-base font-semibold text-gray-800">
+              Sacarato de hidróxido férrico - Administração Endovenosa
+            </h1>
           </div>
 
-          {/* Right side - Navigation Controls */}
-          <div className="flex items-center space-x-4">
-            {/* Navigation buttons group */}
-            <div className="flex items-center bg-gray-50 rounded-lg p-1">
-              <Tooltip title="Ir para página inicial">
-                <Button
-                  type="text"
-                  icon={<Home size={18} />}
-                  onClick={home}
-                  className="flex items-center hover:bg-gray-100"
-                />
-              </Tooltip>
-              <div className="h-6 w-px bg-gray-300 mx-2" />
-              <Space size="small">
-                <Tooltip title="Página anterior">
-                  <Button
-                    type="text"
-                    icon={<ChevronLeft size={18} />}
-                    disabled={currentPage === 0}
-                    onClick={handlePrevious}
-                    className="flex items-center hover:bg-gray-100"
-                  />
-                </Tooltip>
-                <span className="text-sm text-gray-600 font-medium px-2">
-                  {currentPage + 1}/{pages.length}
-                </span>
-                <Tooltip title="Próxima página">
-                  <Button
-                    type="text"
-                    icon={<ChevronRight size={18} />}
-                    disabled={currentPage === pages.length - 1}
-                    onClick={handleNext}
-                    className="flex items-center hover:bg-gray-100"
-                  />
-                </Tooltip>
-              </Space>
-            </div>
-
-            {/* Calculadora component */}
-            <CalculadoraNoripurum />
-            {/* Botão "Abrir PDF em Nova Aba" */}
-            <Tooltip title="Abrir Checklist PDF em nova aba">
-              <Button
-                type="primary"
-                icon={<FileText size={20} />}
-                href={checklistPDF}
-                target="_blank"
-                className="flex items-center"
+          {/* Controls */}
+          <div className="flex items-center gap-4">
+            {/* Grupo de navegação */}
+            <div className="flex items-center rounded-lg bg-gray-100 p-1 shadow-lg">
+              <button
+                type="button"
+                title="Ir para página inicial (H)"
+                aria-label="Ir para página inicial"
+                onClick={goHome}
+                className={navBtnCls(false)}
               >
-                Checklist PDF
-              </Button>
-            </Tooltip>
+                <Home className="text-blue-600" size={22} />
+              </button>
+
+              <div className="mx-2 h-6 w-px bg-gray-300" />
+
+              <button
+                type="button"
+                title="Página anterior (←)"
+                aria-label="Página anterior"
+                onClick={handlePrevious}
+                className={navBtnCls(currentPage === 0)}
+                disabled={currentPage === 0}
+              >
+                <ChevronLeft size={18} />
+              </button>
+
+              <span className="px-2 text-sm font-medium text-gray-600">
+                {currentPage + 1}/{total}
+              </span>
+
+              <button
+                type="button"
+                title="Próxima página (→)"
+                aria-label="Próxima página"
+                onClick={handleNext}
+                className={navBtnCls(currentPage === total - 1)}
+                disabled={currentPage === total - 1}
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+           
+            <CalculadoraNoripurum />
           </div>
         </div>
-      </Header>
+      </header>
 
-      <Content className="pt-16 flex-grow flex justify-center">
-        <div className="container p-6 bg-white shadow-sm rounded-lg w-full max-w-4xl">
-          <Space direction="vertical" className="p-4 bg-white rounded-xl w-full" size="large">
-            <div className="w-full">{pages[currentPage]}</div>
-          </Space>
+      {/* Content */}
+      <main className="flex flex-1 justify-center pt-16">
+        <div className="container w-full max-w-4xl p-6">
+          <div className="w-full rounded-lg bg-white p-4 shadow-sm">
+            <div className="flex flex-col gap-6">
+              <div className="w-full">{pages[currentPage]}</div>
+            </div>
+          </div>
         </div>
-      </Content>
+      </main>
 
       <Footer />
-    </Layout>
+    </div>
   );
 }
 

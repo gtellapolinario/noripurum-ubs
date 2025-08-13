@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "moduleResolution": "bundler",
+    "checkJs": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
+      "@pages/*": ["src/pages/*"],
+      "@c/*": ["src/components/*"],
+      "@p/*": ["src/pages/*"],
+      "@a/*": ["src/assets/*"]
+    }
+  },
+  "include": ["src/**/*", "vite.config.*"],
+  "exclude": ["node_modules", "dist"]
+}

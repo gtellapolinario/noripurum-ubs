@@ -173,6 +173,7 @@ function CalculadoraNoripurum() {
                         type="number"
                         inputMode="decimal"
                         step="0.1"
+                        min={35} 
                         value={peso}
                         onChange={(e) => setPeso(e.target.value)}
                         placeholder="Ex: 70"
